@@ -14,4 +14,4 @@
 
 (defn get-article-details [year]
   (let [year-url (str base-url "/" year)]
-    (map #(get-page-content (java.net.URL. (str year-url "/" %1))) (range 1 10))))
+    (map #(get-page-contents (java.net.URL. (str year-url "/" %1))) (range 1 10))))
