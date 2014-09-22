@@ -2,11 +2,19 @@
   (:require [compojure.core :refer :all]
             [compojure.handler :as handler]
             [compojure.route :as route]
-            [ring.adapter.jetty :as jetty])
+            [ring.adapter.jetty :as jetty]
+            [readr.web :as web]
+            [readr.parser :as parser])
   (:gen-class))
 
+(defn get-urls []
+  (let [months (range 1 10)]
+    (flatten (map
+              #(parser/get-urls-from-page (str "http://www.tofugu.com/2007/" %1))
+              months))))
+
 (defroutes app-routes
-  (GET "/" [] "Hello World")
+  (GET "/" [] (web/index (get-urls)))
   (route/resources "/")
   (route/not-found "Not Found"))
 

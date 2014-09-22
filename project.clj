@@ -4,7 +4,8 @@
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [compojure "1.1.8"]
 		 [enlive "1.1.5"]
-                 [ring/ring-jetty-adapter "1.2.1"]]
+                 [ring/ring-jetty-adapter "1.2.1"]
+                 [hiccup "1.0.5"]]
   :plugins [[lein-ring "0.8.11"]]
   :ring {:handler readr.handler/app}
   :profiles
