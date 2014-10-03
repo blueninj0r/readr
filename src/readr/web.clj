@@ -3,11 +3,22 @@
             [hiccup.core :as hic]
             [hiccup.page :as page]))
 
+(defn get-href
+  [article-url]
+  (get-in article-url [:attrs :href]))
+
+(defn get-title
+  [article-url]
+  (let [title (get-in article-url [:attrs :title])]
+    (if (nil? title)
+      (str (first ( :content article-url)))
+      title)))
+
 (defn article-element
   [article-url]
   [:li
-   [:a {:href (:href article-url) :title (:title article-url)}
-    (:title article-url)]])
+   [:a {:href (get-href article-url) :title (get-title article-url)}
+    (get-title article-url)]])
 
 (defn index
   [article-urls]

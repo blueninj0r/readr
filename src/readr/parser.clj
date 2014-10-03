@@ -13,6 +13,5 @@
 (defn get-urls-from-page
   [url]
   (let [page (get-page url)
-        urls (html/select page [:h1.entry-title :a])
-        attrs (map :attrs urls)]
-    (->> attrs reverse vec)))
+        urls (html/select page [:h1.entry-title :a])]
+    (->> urls reverse vec)))
