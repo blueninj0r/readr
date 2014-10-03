@@ -1,19 +1,7 @@
 # readr
 
-FIXME
+This is a pretty basic Clojure webapp for reading through blog archives without too much pain. You can get a list of all posts for the given year in ascending order. They are numbered so you can use your mental bookmarking system to remember where you got to.
 
-## Prerequisites
+Assuming the blog supports URLs of the format www.test.com/yyyy/mm you will be able to generate a list using this URL: http://
 
-You will need [Leiningen][1] 1.7.0 or above installed.
-
-[1]: https://github.com/technomancy/leiningen
-
-## Running
-
-To start a web server for the application, run:
-
-    lein ring server
-
-## License
-
-Copyright © 2014 FIXME
+This is hosted on a free Heroku instance and there's no caching or fancypants rendering. It will take a few seconds to send you back a page of links.

@@ -8,7 +8,7 @@
   (:gen-class))
 
 (defn get-urls [base-url]
-  (let [months (range 1 12)]
+  (let [months (range 1 13)]
     (flatten (map
               #(parser/get-urls-from-page (str base-url  %1))
               months))))
