@@ -7,14 +7,14 @@
             [readr.parser :as parser])
   (:gen-class))
 
-(defn get-urls []
-  (let [months (range 1 10)]
+(defn get-urls [base-url]
+  (let [months (range 1 12)]
     (flatten (map
-              #(parser/get-urls-from-page (str "http://www.tofugu.com/2007/" %1))
+              #(parser/get-urls-from-page (str base-url  %1))
               months))))
 
 (defroutes app-routes
-  (GET "/" [] (web/index (get-urls)))
+  (GET "/" {{base-url :site year :year} :params} (web/index (get-urls (str "http://" base-url "/" year "/"))))
   (route/resources "/")
   (route/not-found "Not Found"))
 
